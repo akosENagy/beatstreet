@@ -94,5 +94,7 @@ hs_err_pid*
 target/
 .idea/*
 
+resources/application.properties
+
 
 # End of https://www.gitignore.io/api/java,intellij
