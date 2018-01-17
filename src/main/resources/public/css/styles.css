@@ -1,3 +1,31 @@
-h1 {
-    color: red;
+body {
+    background-color: gray;
+}
+
+.header-img {
+    width: 100%;
+    height: 700px;
+}
+
+.header-container {
+    width: 90%;
+    text-align: center;
+}
+
+.player-container {
+    padding-top: 150px;
+    padding-bottom: 150px;
+    height: 500px;
+    width: 600px;
+}
+
+#player-todo {
+    height: 100%;
+    width: 100%;
+}
+
+.shop-container {
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
