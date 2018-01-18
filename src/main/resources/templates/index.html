@@ -26,22 +26,28 @@
     <link rel="stylesheet" type="text/css" href="/css/styles.css"/>
 
     <script src="/js/app.js"></script>
+
 </head>
 
 <body>
-    <div class="container header-container">
-        <image class="header-img" src="images/header.jpg"></image>
+    <div class="welcome-container container-fluid">
+        <image class="welcome-img" src="images/header.jpg"></image>
     </div>
     <div class="container player-container">
+        <h2 class="beatstoretext">BEAT STORE</h2>
         <div class="row">
-            <div id="musicplayer">
-                <image id="player-todo" src="images/under-constr.png"></image>
+            <div class="col-md-8 col-md-offset-2" id="musicplayer">
+                <div class="container player-inside">
+                    <div class="row player-header">
+                        <div class="player-header-container col-md-6 col-md-offset-7">
+                            <p id="cart-total">$0.00</p>
+                            <i class="glyphicon glyphicon-shopping-cart"></i>
+                            <button id="player-buynow">Buy now</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container shop-container">
-        <h2>Here's where I'd put my songs...</h2>
-        <p>IF I HAD ANY...</p>
     </div>
 </body>
 </html>

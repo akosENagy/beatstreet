@@ -1,31 +1,70 @@
 body {
-    background-color: gray;
+    background-color: #c1c1c1;
 }
 
-.header-img {
+.welcome-img {
     width: 100%;
     height: 700px;
 }
 
-.header-container {
-    width: 90%;
+.welcome-container {
+    width: 100%;
     text-align: center;
 }
 
 .player-container {
-    padding-top: 150px;
+    padding-top: 80px;
     padding-bottom: 150px;
-    height: 500px;
-    width: 600px;
+    text-align: center;
 }
 
-#player-todo {
-    height: 100%;
+.player-inside {
     width: 100%;
 }
 
-.shop-container {
-    text-align: center;
-    padding-top: 50px;
-    padding-bottom: 50px;
+#musicplayer {
+    border: 2px solid #1162b2;
+    border-radius: 2px;
+    background-color: #292e33;
+    height: 700px;
+    padding: 0;
+}
+
+.beatstoretext {
+    font-size: 46px;
+    color: #1162b2;
+    padding: 20px 20px;
+}
+
+#cart-total {
+    display: inline;
+    font-size: 1.4em;
+    color: #1182b2;
+    padding-right: 10px;
+}
+
+.glyphicon-shopping-cart {
+    color: #1182b2;
+    display: inline;
+    padding: 0 5px;
+}
+
+.player-header {
+    background-color: #444444;
+    padding: 5px 0;
+}
+
+#player-buynow {
+    display: inline;
+    background-color: #1182b2;
+    color: #c1c1c1;
+    padding: 5px 10px;
+    font-weight: bold;
+    margin-left: 10px;
+    box-shadow: 1px 1px #1162b2;
+    border: none;
+}
+
+.player-header-container {
+    padding-left: 50px;
 }

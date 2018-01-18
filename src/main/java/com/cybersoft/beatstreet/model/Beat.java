@@ -11,6 +11,8 @@ public class Beat {
     private int id;
     private String path;
     private int lengthInSeconds;
+    private String title;
+    private int priceInCents;
 
     @ManyToOne
     private User owner;
@@ -49,5 +51,21 @@ public class Beat {
 
     public void setOwner(User owner) {
         this.owner = owner;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public int getPriceInCents() {
+        return priceInCents;
+    }
+
+    public void setPriceInCents(int priceInCents) {
+        this.priceInCents = priceInCents;
     }
 }
