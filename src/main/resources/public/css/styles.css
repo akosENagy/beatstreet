@@ -8,6 +8,7 @@ body {
 }
 
 .welcome-container {
+    padding: 0;
     width: 100%;
     text-align: center;
 }
@@ -19,6 +20,8 @@ body {
 }
 
 .player-inside {
+    height: inherit;
+    position: relative;
     width: 100%;
 }
 
@@ -51,7 +54,7 @@ body {
 
 .player-header {
     background-color: #444444;
-    padding: 5px 0;
+    padding: 12px 0;
 }
 
 #player-buynow {
@@ -61,10 +64,59 @@ body {
     padding: 5px 10px;
     font-weight: bold;
     margin-left: 10px;
-    box-shadow: 1px 1px #1162b2;
+    box-shadow: 0 2px #1162b2;
     border: none;
 }
 
+#player-buynow:focus {
+    outline: 0;
+}
+
+#player-buynow:hover {
+    background-color: #1162b2;
+}
+
+#player-buynow:active {
+    box-shadow: 0 0 #113292;
+    transform: translateY(2px);
+}
+
 .player-header-container {
-    padding-left: 50px;
+    padding-left: 75px;
+}
+
+.player-controls {
+    width:inherit;
+    position: absolute;
+    bottom: 4px;
+    left: 15px;
+    right: 0;
+    background-color: #444444;
+    border: 1px solid #515151;
+    height: 50px;
+}
+
+.player-control {
+    color: #c1c1c1;
+    padding: 5px 10px;
+}
+
+.glyphicon-play {
+    padding-top: 3px;
+    font-size: 1.3em;
+}
+
+.player-buttons {
+    text-align: left;
+    padding-left: 10px;
+    height: 100%;
+    padding-top: 10px;
+}
+
+.player-body {
+    height: 100%;
+}
+
+.controls-container {
+    position: relative;
 }
