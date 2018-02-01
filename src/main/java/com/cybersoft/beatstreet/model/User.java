@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "Users")
 public class User {
 
     @Id
@@ -15,9 +16,13 @@ public class User {
     private String name;
     private String profileImagePath;
 
-    @OneToMany(mappedBy = "owner")
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
     private List<Beat> beats = new ArrayList<>();
 
+
+    public void addBeat(Beat beat) {
+        beats.add(beat);
+    }
 
 
     // GETTERS AND SETTERS

@@ -13,6 +13,7 @@ public class Beat {
     private int lengthInSeconds;
     private String title;
     private int priceInCents;
+    private String genre;
 
     @ManyToOne
     private User owner;
@@ -67,5 +68,13 @@ public class Beat {
 
     public void setPriceInCents(int priceInCents) {
         this.priceInCents = priceInCents;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 }
