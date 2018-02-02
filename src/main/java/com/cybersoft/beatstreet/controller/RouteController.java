@@ -4,7 +4,10 @@ import com.cybersoft.beatstreet.service.BeatService;
 import com.cybersoft.beatstreet.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.Set;
 
 
 @Controller
@@ -17,7 +20,9 @@ public class RouteController {
     private BeatService beatService;
 
     @GetMapping(value = "/")
-    public String renderRoot() {
+    public String renderRoot(Model model) {
+        Set<String> genres = beatService.getGenres();
+        model.addAttribute("genres", genres);
         return "index";
     }
 

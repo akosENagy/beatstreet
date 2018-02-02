@@ -5,6 +5,11 @@ import com.cybersoft.beatstreet.repository.BeatRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+
 @Service
 public class BeatService {
 
@@ -20,6 +25,16 @@ public class BeatService {
         return beatRepository.findOne(id);
     }
 
+    public Set<String> getGenres() {
+        List<Beat> beats = beatRepository.findAll();
+        Set<String> genres = new HashSet<>();
+
+        for (Beat b : beats) {
+            genres.add(b.getGenre());
+        }
+
+        return genres;
+    }
 
     // GETTERS AND SETTERS
 

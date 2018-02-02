@@ -120,3 +120,30 @@ body {
 .controls-container {
     position: relative;
 }
+
+#genres-header {
+    margin-bottom: 0;
+    color: #c1c1c1;
+    border-bottom: solid 1px #515151;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 10px 0;
+}
+
+.sidebar-genre {
+    color: #c1c1c1;
+    border-bottom: solid 1px #515151;
+    text-align: center;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.sidebar-genre-text {
+    padding-top: 7px;
+}
+
+.player-sidebar {
+    border-right: solid 1px #515151;
+    height: inherit;
+}
