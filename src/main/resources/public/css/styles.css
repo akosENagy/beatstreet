@@ -145,5 +145,6 @@ body {
 
 .player-sidebar {
     border-right: solid 1px #515151;
-    height: inherit;
+    height: 620px;
+    box-shadow: 0 2px;
 }

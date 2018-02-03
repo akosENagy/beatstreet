@@ -1,12 +1,16 @@
 package com.cybersoft.beatstreet.model;
 
 
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "Users")
+@JsonIgnoreProperties("beats")
 public class User {
 
     @Id

@@ -1,6 +1,7 @@
 package com.cybersoft.beatstreet.service;
 
 import com.cybersoft.beatstreet.model.Beat;
+import com.cybersoft.beatstreet.model.User;
 import com.cybersoft.beatstreet.repository.BeatRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -34,6 +36,26 @@ public class BeatService {
         }
 
         return genres;
+    }
+
+    public List<Beat> getBeatsByGenre(String genre) {
+        List<Beat> beats = beatRepository.findAll();
+        return beats
+                .stream()
+                .filter(beat -> beat.getGenre().equals(genre))
+                .collect(Collectors.toList());
+    }
+
+    public List<Beat> getBeatsByOwner(int ownerId) {
+        List<Beat> beats = beatRepository.findAll();
+        return beats
+                .stream()
+                .filter(beat -> beat.getOwner().getId() == ownerId)
+                .collect(Collectors.toList());
+    }
+
+    public List<Beat> getBeatsByOwner(User user) {
+        return getBeatsByOwner(user.getId());
     }
 
     // GETTERS AND SETTERS

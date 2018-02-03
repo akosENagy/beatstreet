@@ -1,6 +1,7 @@
 package com.cybersoft.beatstreet.model;
 
 
+
 import javax.persistence.*;
 
 @Entity
@@ -16,6 +17,7 @@ public class Beat {
     private String genre;
 
     @ManyToOne
+    @JoinColumn(name = "owner_id")
     private User owner;
 
 
