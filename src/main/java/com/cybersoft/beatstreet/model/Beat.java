@@ -21,6 +21,17 @@ public class Beat {
     private User owner;
 
 
+    public Beat() {
+    }
+
+    public Beat(String path, int lengthInSeconds, String title, int priceInCents, String genre, User owner) {
+        this.path = path;
+        this.lengthInSeconds = lengthInSeconds;
+        this.title = title;
+        this.priceInCents = priceInCents;
+        this.genre = genre;
+        this.owner = owner;
+    }
 
     // GETTERS AND SETTERS
 

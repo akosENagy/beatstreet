@@ -1,5 +1,6 @@
 
 var main = function() {
+    setPlayerBodyHeight();
     addGenreEventHandlers();
 
 };
@@ -28,24 +29,33 @@ var loadGenre = function() {
 };
 
 var buildSongElement = function(song) {
-    var playerBody = document.getElementById("player-main-body");
 
-    var songTitle = document.createElement("h3");
-    songTitle.className += "player-body-song-title";
+    var newElement = document.getElementById("playerbody-song-proto").cloneNode(true);
+    newElement.removeAttribute("id");
+
+    var songElementLeft = newElement.children[0];
+    var songElementRight = newElement.children[1];
+
+    var image = songElementLeft.children[0];
+    // image.setAttribute("src", song["path"]); if image exists?
+
+    var infoContainer = songElementLeft.children[1];
+    var songTitle = infoContainer.children[0];
+    var songLength = infoContainer.children[1];
+    var songOwner = infoContainer.children[2];
+
     songTitle.innerHTML = song["title"];
-
-    //title, id, path, princeincents, owner, lengthinseconds
-
-    var songOwner = document.createElement("p");
-    songOwner.className += "player-body-song-owner";
     songOwner.innerHTML = song["owner"]["name"];
+    songLength.innerHTML = (~~(song["lengthInSeconds"] / 60)) + ":" + song["lengthInSeconds"] % 60;
 
-    var songDiv = document.createElement("div");
-    songDiv.className += "playerbody-song";
+    if (song["lengthInSeconds"] % 60 == 0) songLength.innerHTML += "0";
 
-    songDiv.appendChild(songTitle);
-    songDiv.appendChild(songOwner);
-    playerBody.appendChild(songDiv);
+    newElement.style.display = "inline-block";
+    document.getElementById("player-main-body").appendChild(newElement);
+};
+
+var setPlayerBodyHeight = function() {
+    var playerBody = document.getElementById("player-main-body");
 };
 
 $("document").ready(main);
