@@ -215,3 +215,28 @@ body {
     max-height: 593px;
     overflow: auto;
 }
+
+.playerbody-song:hover {
+    cursor: pointer;
+}
+
+#player-currentsong {
+    display: none;
+}
+
+.player-currentsong-info {
+    color: #818181;
+    display: inline-block;
+    height: 100%;
+    margin: 0;
+}
+
+.player-currentsong-title {
+    font-size: 1.1em;
+}
+
+.player-currentsong-image {
+    width: 30px;
+    height: 30px;
+    float: left;
+}

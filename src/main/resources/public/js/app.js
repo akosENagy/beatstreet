@@ -1,10 +1,20 @@
 
-var main = function() {
-    setPlayerBodyHeight();
-    addGenreEventHandlers();
+var currentSong = null;
 
+var main = function() {
+    addGenreEventHandlers();
 };
 
+var loadSong = function() {
+    // make it visible if this is the first song to be loaded.
+    if (currentSong == null) {
+        document.getElementById("player-currentsong").style.display = "block";
+    }
+
+
+    currentSong = this;
+    // TODO setup current song element
+};
 
 var addGenreEventHandlers = function() {
     var elements = document.getElementsByClassName("sidebar-genre");
@@ -51,11 +61,9 @@ var buildSongElement = function(song) {
     if (song["lengthInSeconds"] % 60 == 0) songLength.innerHTML += "0";
 
     newElement.style.display = "inline-block";
+    newElement.addEventListener("click", loadSong);
     document.getElementById("player-main-body").appendChild(newElement);
 };
 
-var setPlayerBodyHeight = function() {
-    var playerBody = document.getElementById("player-main-body");
-};
 
 $("document").ready(main);
