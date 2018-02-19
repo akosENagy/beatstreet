@@ -63,7 +63,7 @@
                     <div class="row player-controls">
                         <div class="player-buttons col-md-4">
                             <i class="player-control glyphicon glyphicon-fast-backward"></i>
-                            <i class="player-control glyphicon glyphicon-play"></i>
+                            <i class="player-control glyphicon glyphicon-play" id="play-button"></i>
                             <i class="player-control glyphicon glyphicon-fast-forward"></i>
                             <i class="player-control glyphicon glyphicon-volume-up" id="volume-control"></i>
                         </div>
@@ -72,8 +72,17 @@
                                 <div class="player-currentsong-info-container container-fluid">
                                     <image class="player-currentsong-info player-currentsong-image" src="images/default-song-image.png"></image>
                                     <h3 class="player-currentsong-info player-currentsong-title">Title</h3>
-                                    <p class="player-currentsong-info player-currenstong-currenttime">0:00</p> / <p class="player-currentsong-info player-currentsong-length">0:00</p>
+                                    <p class="player-currentsong-info" id="player-currentsong-currenttime">0:00</p> / <p class="player-currentsong-info" id="player-currentsong-length">0:00</p>
                                     <p class="player-currentsong-info player-currentsong-owner">Owner</p>
+                                </div>
+                                <div class="player-currentsong-progress-container">
+                                    <div class="audio-wrapper" id="audio-container">
+                                        <audio src="http://www.lukeduncan.me/oslo.mp3" id="currentsong-audio" ontimeupdate="initProgressBar()">
+                                        </audio>
+                                    </div>
+                                    <span id="seekObjContainer">
+                                      <progress id="seekObj" value="0" max="1"></progress>
+                                    </span>
                                 </div>
                             </div>
                         </div>
