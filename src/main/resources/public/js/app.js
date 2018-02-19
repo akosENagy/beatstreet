@@ -31,9 +31,9 @@ var loadSong = function() {
 
     currentSongElement = currentSongElement.children[0]; //switch to inside container.
     currentSongElement.children[0].setAttribute("src", image);
-    currentSongElement.children[1].innerHTML = title;
-    currentSongElement.children[3].innerHTML = length;
-    currentSongElement.children[4].innerHTML = owner;
+    $(".player-currentsong-title").html(title);
+    $("#player-currentsong-length").html(length);
+    $(".player-currentsong-owner").html(owner);
 };
 
 var addGenreEventHandlers = function() {

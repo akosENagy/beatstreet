@@ -72,7 +72,7 @@
                                 <div class="player-currentsong-info-container container-fluid">
                                     <image class="player-currentsong-info player-currentsong-image" src="images/default-song-image.png"></image>
                                     <h3 class="player-currentsong-info player-currentsong-title">Title</h3>
-                                    <p class="player-currentsong-info" id="player-currentsong-currenttime">0:00</p> / <p class="player-currentsong-info" id="player-currentsong-length">0:00</p>
+                                    <p id="song-made-by">by</p>
                                     <p class="player-currentsong-info player-currentsong-owner">Owner</p>
                                 </div>
                                 <div class="player-currentsong-progress-container">
@@ -80,9 +80,11 @@
                                         <audio src="http://www.lukeduncan.me/oslo.mp3" id="currentsong-audio" ontimeupdate="initProgressBar()">
                                         </audio>
                                     </div>
+                                    <p class="player-currentsong-info" id="player-currentsong-currenttime">0:00</p>
                                     <span id="seekObjContainer">
                                       <progress id="seekObj" value="0" max="1"></progress>
                                     </span>
+                                    <p class="player-currentsong-info" id="player-currentsong-length">0:00</p>
                                 </div>
                             </div>
                         </div>
