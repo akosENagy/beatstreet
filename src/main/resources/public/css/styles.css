@@ -101,7 +101,7 @@ body {
     padding: 5px 10px;
 }
 
-.glyphicon-play {
+#play-button {
     padding-top: 3px;
     font-size: 1.3em;
 }
@@ -239,4 +239,26 @@ body {
     width: 30px;
     height: 30px;
     float: left;
+}
+
+#seekObj {
+    width: 90%;
+}
+
+#seekObj[value] {
+    -webkit-appearance: none;
+    background-color: #c1c1c1;
+    color: #113292;
+    height: 5px;
+}
+
+#seekObj[value]::-webkit-progress-bar {
+    background-color: #c1c1c1;
+    border-radius: 2px;
+    border: 1px solid #818181;
+    color: #113292;
+}
+
+#seekObj::-webkit-progress-value {
+    background-color: #1162b2;
 }
