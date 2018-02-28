@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -17,6 +18,9 @@ public class BeatService {
 
     @Autowired
     private BeatRepository beatRepository;
+
+    @Autowired
+    UserService userService;
 
 
     public void saveBeat(Beat beat) {
@@ -56,6 +60,16 @@ public class BeatService {
 
     public List<Beat> getBeatsByOwner(User user) {
         return getBeatsByOwner(user.getId());
+    }
+
+    public Beat getBeatFromMetadata(Map<String, String> metadata) {
+        //String path, int lengthInSeconds, String title, String genre, User owner
+        String path = metadata.get("path");
+        int length = Integer.valueOf(metadata.get("length"));
+        String title = metadata.get("title");
+        String genre = metadata.get("genre");
+        User owner = userService.getUserByUsername(metadata.get("artist"));
+        return new Beat(path, length, title, genre, owner);
     }
 
     // GETTERS AND SETTERS

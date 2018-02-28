@@ -28,7 +28,12 @@ public class AjaxController {
 
     @GetMapping(value = "/api/genres/{genre}")
     public List<Beat> songsByGenre(@PathVariable String genre) {
-        System.out.println(genre);
-        return beatService.getBeatsByGenre(genre);
+        List<Beat> beats = beatService.getBeatsByGenre(genre);
+
+        for (Beat beat : beats) {
+            beat.setPath(beat.getPath().replace("src/main/resources/public", ""));
+        }
+
+        return beats;
     }
 }

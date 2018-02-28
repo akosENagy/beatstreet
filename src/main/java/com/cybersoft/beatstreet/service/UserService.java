@@ -6,6 +6,8 @@ import com.cybersoft.beatstreet.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
 
@@ -19,6 +21,16 @@ public class UserService {
 
     public User getUserById(int id) {
         return userRepository.findOne(id);
+    }
+
+    public User getUserByUsername(String username) {
+        List<User> users = userRepository.findAll();
+        for (User u : users) {
+            if (u.getName().equals(username)) {
+                return u;
+            }
+        }
+        return null;
     }
 
 
