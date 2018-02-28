@@ -273,3 +273,49 @@ body {
     font-size: 0.8em;
     color: #c1c1c1;
 }
+
+#volume-slider {
+    cursor: pointer;
+    writing-mode: bt-lr; /* IE */
+    -webkit-appearance: none; /* WebKit */
+    width: 90px;
+    height: 8px;
+    position: absolute;
+    left: 160px;
+    bottom: 19px;
+    border-radius: 3px;
+    background: #818181;
+
+    /*fix for FF unable to apply focus style bug
+    border: 1px solid white;
+    */
+}
+
+#volume-slider:focus {
+    outline: none;
+}
+
+#volume-slider::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    width: 90px;
+    height: 8px;
+    background: #818181;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    margin-top: -4px;
+    border: 1px solid #292e33;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: #c1c1c1;
+    cursor: pointer;
+}
+
+#volume-control {
+    cursor: pointer;
+}

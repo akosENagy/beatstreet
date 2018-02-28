@@ -131,18 +131,34 @@ var initPlayer = function() {
     // ----------------------------------------------------------
     function togglePlay() {
         var playButton = $('#play-button');
-        if (player.paused === false) {
-            player.pause();
-            isPlaying = false;
-            playButton.removeClass('glyphicon-pause');
-            playButton.addClass('glyphicon-play');
-        } else {
-            player.play();
-            playButton.removeClass('glyphicon-play');
-            playButton.addClass('glyphicon-pause');
-            isPlaying = true;
+        if (currentSong !== null) {
+            if (player.paused === false) {
+                player.pause();
+                isPlaying = false;
+                playButton.removeClass('glyphicon-pause');
+                playButton.addClass('glyphicon-play');
+            } else {
+                player.play();
+                playButton.removeClass('glyphicon-play');
+                playButton.addClass('glyphicon-pause');
+                isPlaying = true;
+            }
         }
     }
+
+    function toggleVolSlider() {
+        $("#volume-slider").toggle();
+    }
+
+    var $volumeButton = $("#volume-control");
+    var $volumeSlider = $("#volume-slider");
+    $(window).click(function(e) {
+        if ($volumeSlider.is(":visible") && !$(e.target).is($volumeSlider) && !$(e.target).is($volumeButton)) {
+            toggleVolSlider();
+        }
+    });
+    $volumeButton.click(toggleVolSlider);
+
 };
 
 var calculateCurrentValue = function(currentTime) {
