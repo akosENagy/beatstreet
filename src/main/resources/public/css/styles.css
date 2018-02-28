@@ -104,6 +104,7 @@ body {
 #play-button {
     padding-top: 3px;
     font-size: 1.3em;
+    cursor: pointer;
 }
 
 .player-buttons {
@@ -152,6 +153,14 @@ body {
 .playerbody-song {
     margin: 0;
     text-align: left;
+}
+
+.playerbody-song:hover, .selected-song {
+    background: #515151;
+}
+
+.selected-song p, .selected-song h3 {
+    font-weight: bold;
 }
 
 .col-md-10 > .player-body-song-image {
@@ -242,13 +251,16 @@ body {
 
 #seekObj {
     width: 85%;
+    background-color: #515151;
 }
 
 #seekObj[value] {
     -webkit-appearance: none;
-    background-color: #c1c1c1;
-    color: #113292;
-    height: 5px;
+    background-color: #515151;
+    color: #1162b2;
+    height: 7px;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 #seekObj[value]::-webkit-progress-bar {
@@ -318,4 +330,13 @@ body {
 
 #volume-control {
     cursor: pointer;
+}
+
+.selected-genre {
+    background-color: #515151;
+    font-weight: bold;
+}
+
+.sidebar-genre:hover {
+    background-color: #515151;
 }

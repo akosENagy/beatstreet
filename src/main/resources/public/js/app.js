@@ -1,5 +1,7 @@
 
 var currentSong = null;
+var selectedSong = null;
+var selectedGenre = null;
 
 var main = function() {
     addGenreEventHandlers();
@@ -35,6 +37,8 @@ var loadSong = function() {
     $("#player-currentsong-length").html(length);
     $(".player-currentsong-owner").html(owner);
 
+    selectSong($(this));
+
     playCurrentSong();
 };
 
@@ -47,6 +51,7 @@ var addGenreEventHandlers = function() {
 };
 
 var loadGenre = function() {
+    selectGenre($(this));
     var genre = this.children[0].innerHTML;
     $.get("http://localhost:60001/api/genres/" + genre, function(data) {
         var playerBody = document.getElementById("player-main-body");
@@ -147,7 +152,7 @@ var initPlayer = function() {
     }
 
     player.volume = 0.5;
-    $volumeSlider = $("#volume-slider");
+    var $volumeSlider = $("#volume-slider");
     $volumeSlider.click(setVolume);
     $volumeSlider.change(setVolume);
     $volumeSlider.on("input", setVolume);
@@ -169,7 +174,7 @@ var calculateCurrentValue = function(currentTime) {
 
 var playCurrentSong = function() {
     document.getElementById("currentsong-audio").play();
-    $playButton = $("#play-button");
+    var $playButton = $("#play-button");
 
     if ($playButton.hasClass("glyphicon-play")) {
         $playButton.removeClass("glyphicon-play");
@@ -177,4 +182,20 @@ var playCurrentSong = function() {
     }
 };
 
-$("document").ready(main);
+var selectGenre = function($genreElement) {
+    if (selectedGenre !== null) {
+        selectedGenre.removeClass("selected-genre");
+    }
+    selectedGenre = $genreElement;
+    selectedGenre.addClass("selected-genre");
+};
+
+var selectSong = function($songElement) {
+    if (selectedSong !== null) {
+        selectedSong.removeClass("selected-song");
+    }
+    selectedSong = $songElement;
+    selectedSong.addClass("selected-song");
+};
+
+$(main);
