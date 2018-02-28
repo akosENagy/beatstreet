@@ -34,6 +34,8 @@ var loadSong = function() {
     $(".player-currentsong-title").html(title);
     $("#player-currentsong-length").html(length);
     $(".player-currentsong-owner").html(owner);
+
+    playCurrentSong();
 };
 
 var addGenreEventHandlers = function() {
@@ -138,27 +140,21 @@ var initPlayer = function() {
                 playButton.removeClass('glyphicon-pause');
                 playButton.addClass('glyphicon-play');
             } else {
-                player.play();
-                playButton.removeClass('glyphicon-play');
-                playButton.addClass('glyphicon-pause');
+                playCurrentSong();
                 isPlaying = true;
             }
         }
     }
 
-    function toggleVolSlider() {
-        $("#volume-slider").toggle();
+    player.volume = 0.5;
+    $volumeSlider = $("#volume-slider");
+    $volumeSlider.click(setVolume);
+    $volumeSlider.change(setVolume);
+    $volumeSlider.on("input", setVolume);
+
+    function setVolume() {
+        document.getElementById("currentsong-audio").volume = this.value / 100;
     }
-
-    var $volumeButton = $("#volume-control");
-    var $volumeSlider = $("#volume-slider");
-    $(window).click(function(e) {
-        if ($volumeSlider.is(":visible") && !$(e.target).is($volumeSlider) && !$(e.target).is($volumeButton)) {
-            toggleVolSlider();
-        }
-    });
-    $volumeButton.click(toggleVolSlider);
-
 };
 
 var calculateCurrentValue = function(currentTime) {
@@ -169,6 +165,16 @@ var calculateCurrentValue = function(currentTime) {
         current_time = (current_minute) + ":" + (current_seconds < 10 ? "0" + current_seconds : current_seconds);
 
     return current_time;
+};
+
+var playCurrentSong = function() {
+    document.getElementById("currentsong-audio").play();
+    $playButton = $("#play-button");
+
+    if ($playButton.hasClass("glyphicon-play")) {
+        $playButton.removeClass("glyphicon-play");
+        $playButton.addClass("glyphicon-pause");
+    }
 };
 
 $("document").ready(main);
