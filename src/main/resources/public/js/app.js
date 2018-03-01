@@ -105,9 +105,8 @@ var initProgressBar = function() {
     progressbar.value = player.currentTime === 0 ? 0 : (player.currentTime / player.duration);
     progressbar.addEventListener("click", seek);
 
-    if (player.currentTime == player.duration) {
-        $('#play-button').removeClass('glyphicon-pause');
-        $('#play-button').addClass('glyphicon-play');
+    if (player.currentTime === player.duration) {
+        nextSong();
     }
 
     function seek(evt) {
@@ -231,30 +230,31 @@ var selectSong = function($songElement) {
 };
 
 var initNextAndPrevious = function() {
-    $("#next-button").on("click", function () {
-        if (selectedSong !== null) {
-            var selectedInside = selectedSong[0];
-            var nextSong = selectedInside.nextElementSibling;
-            if (nextSong === undefined || nextSong === null) {
-                nextSong = $("#player-main-body").children()[0];
-            }
-            nextSong.click();
+    $("#next-button").on("click", nextSong);
+    $("#prev-button").on("click", previousSong);
+};
+
+var nextSong = function() {
+    if (selectedSong !== null) {
+        var selectedInside = selectedSong[0];
+        var nextSong = selectedInside.nextElementSibling;
+        if (nextSong === undefined || nextSong === null) {
+            nextSong = $("#player-main-body").children()[0];
         }
+        nextSong.click();
+    }
+};
 
-
-    });
-
-    $("#prev-button").on("click", function () {
-        if (selectedSong !== null) {
-            var selectedInside = selectedSong[0];
-            var prevSong = selectedInside.previousElementSibling;
-            if (prevSong === undefined || prevSong === null) {
-                var siblings = $("#player-main-body").children();
-                prevSong = siblings[siblings.length - 1];
-            }
-            prevSong.click();
+var previousSong = function() {
+    if (selectedSong !== null) {
+        var selectedInside = selectedSong[0];
+        var prevSong = selectedInside.previousElementSibling;
+        if (prevSong === undefined || prevSong === null) {
+            var siblings = $("#player-main-body").children();
+            prevSong = siblings[siblings.length - 1];
         }
-    });
+        prevSong.click();
+    }
 };
 
 $(main);

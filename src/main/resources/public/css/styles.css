@@ -348,3 +348,10 @@ body {
 #next-button, #prev-button {
     cursor: pointer;
 }
+
+.player-inside {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
