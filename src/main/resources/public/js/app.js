@@ -122,7 +122,7 @@ var initPlayer = function() {
         player = document.getElementById('currentsong-audio'),
         isPlaying = false,
         playBtn = document.getElementById('play-button'),
-        $volumeSlider = $("#volume-slider"),
+        $volumeSlider = $("#volume-slider")[0],
         $volumeButton = $("#volume-control"),
         lastVolume = 0.5;
 
@@ -137,9 +137,9 @@ var initPlayer = function() {
     player.volume = 0.5;
     $volumeButton.click(toggleMute);
 
-    $volumeSlider.click(setVolume);
-    $volumeSlider.change(setVolume);
-    $volumeSlider.on("input", setVolume);
+    $volumeSlider.addEventListener("click", setVolume);
+    $volumeSlider.addEventListener("change", setVolume);
+    $volumeSlider.addEventListener("input", setVolume);
 
     // Controls & Sounds Methods
     // ----------------------------------------------------------
@@ -159,17 +159,21 @@ var initPlayer = function() {
     }
 
     function setVolume() {
-        player.volume = this.value / 100;
-        if (this.value > 50 && !$volumeButton.hasClass("glyphicon-volume-up")) {
-            $volumeButton.removeClass("glyphicon-volume-off");
-            $volumeButton.removeClass("glyphicon-volume-down");
-            $volumeButton.addClass("glyphicon-volume-up");
-        } else if (this.value > 0 && !$volumeButton.hasClass("glyphicon-volume-down")) {
-            $volumeButton.removeClass("glyphicon-volume-off");
-            $volumeButton.removeClass("glyphicon-volume-up");
-            $volumeButton.addClass("glyphicon-volume-down");
+        player.volume = $volumeSlider.value / 100;
+        if ($volumeSlider.value > 50) {
+            if (!($volumeButton.hasClass("glyphicon-volume-up"))) {
+                $volumeButton.removeClass("glyphicon-volume-off");
+                $volumeButton.removeClass("glyphicon-volume-down");
+                $volumeButton.addClass("glyphicon-volume-up");
+            }
+        } else if ($volumeSlider.value > 0) {
+            if (!($volumeButton.hasClass("glyphicon-volume-down"))) {
+                $volumeButton.removeClass("glyphicon-volume-off");
+                $volumeButton.removeClass("glyphicon-volume-up");
+                $volumeButton.addClass("glyphicon-volume-down");
+            }
         } else {
-            if (!$volumeButton.hasClass("glyphicon-volume-off")) {
+            if (!($volumeButton.hasClass("glyphicon-volume-off"))) {
                 $volumeButton.removeClass("glyphicon-volume-down");
                 $volumeButton.removeClass("glyphicon-volume-up");
                 $volumeButton.addClass("glyphicon-volume-off");
@@ -178,14 +182,13 @@ var initPlayer = function() {
     }
 
     function toggleMute() {
-        if (!$volumeButton.hasClass("glyphicon-volume-off")) {
-            if (player.volume > 0) {
-                lastVolume = player.volume;
-                player.volume = 0;
-                $volumeSlider.value = 0;
-                $volumeButton.removeClass("glyphicon-volume-up");
-                $volumeButton.addClass("glyphicon-volume-off");
-            }
+        if (!($volumeButton.hasClass("glyphicon-volume-off"))) {
+            lastVolume = $volumeSlider.value;
+            $volumeSlider.value = 0;
+            setVolume();
+        } else {
+            $volumeSlider.value = lastVolume;
+            setVolume();
         }
     }
 };
