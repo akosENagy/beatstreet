@@ -6,6 +6,7 @@ var selectedGenre = null;
 var main = function() {
     addGenreEventHandlers();
     initPlayer();
+    initNextAndPrevious();
 };
 
 var loadSong = function() {
@@ -227,6 +228,33 @@ var selectSong = function($songElement) {
     }
     selectedSong = $songElement;
     selectedSong.addClass("selected-song");
+};
+
+var initNextAndPrevious = function() {
+    $("#next-button").on("click", function () {
+        if (selectedSong !== null) {
+            var selectedInside = selectedSong[0];
+            var nextSong = selectedInside.nextElementSibling;
+            if (nextSong === undefined || nextSong === null) {
+                nextSong = $("#player-main-body").children()[0];
+            }
+            nextSong.click();
+        }
+
+
+    });
+
+    $("#prev-button").on("click", function () {
+        if (selectedSong !== null) {
+            var selectedInside = selectedSong[0];
+            var prevSong = selectedInside.previousElementSibling;
+            if (prevSong === undefined || prevSong === null) {
+                var siblings = $("#player-main-body").children();
+                prevSong = siblings[siblings.length - 1];
+            }
+            prevSong.click();
+        }
+    });
 };
 
 $(main);

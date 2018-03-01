@@ -344,3 +344,7 @@ body {
 .sidebar-genre:not(.selected-genre):hover {
     background-color: #414141;
 }
+
+#next-button, #prev-button {
+    cursor: pointer;
+}
