@@ -25,7 +25,10 @@
             crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="/css/styles.css"/>
 
+    <script src="/js/genres.js"></script>
+    <script src="/js/songs.js"></script>
     <script src="/js/app.js"></script>
+    <script src="/js/main.js"></script>
 
 </head>
 
@@ -78,7 +81,7 @@
                                 </div>
                                 <div class="player-currentsong-progress-container">
                                     <div class="audio-wrapper" id="audio-container">
-                                        <audio src="http://www.lukeduncan.me/oslo.mp3" id="currentsong-audio" ontimeupdate="initProgressBar()">
+                                        <audio src="http://www.lukeduncan.me/oslo.mp3" id="currentsong-audio" ontimeupdate="app.musicplayer.initProgressBar()">
                                         </audio>
                                     </div>
                                     <p class="player-currentsong-info" id="player-currentsong-currenttime">0:00</p>
