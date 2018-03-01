@@ -13,10 +13,10 @@ import java.util.Map;
 public class FileHandlerService {
 
     @Autowired
-    BeatService beatService;
+    private BeatService beatService;
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     public Map<String, String> readMetaData(String filePath) {
         Map<String, String> metadata = new HashMap<>();
@@ -28,14 +28,12 @@ public class FileHandlerService {
 
             if (file.hasId3v2Tag()) {
                 ID3v2 id3v2 = file.getId3v2Tag();
-
                 genre = id3v2.getGenreDescription();
                 artist = id3v2.getArtist();
                 title = id3v2.getTitle();
             }
             else if (file.hasId3v1Tag()) {
                 ID3v1 id3v1 = file.getId3v1Tag();
-
                 genre = id3v1.getGenreDescription();
                 artist = id3v1.getArtist();
                 title = id3v1.getTitle();
@@ -55,5 +53,21 @@ public class FileHandlerService {
         }
 
         return metadata;
+    }
+
+    public BeatService getBeatService() {
+        return beatService;
+    }
+
+    public void setBeatService(BeatService beatService) {
+        this.beatService = beatService;
+    }
+
+    public UserService getUserService() {
+        return userService;
+    }
+
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
 }

@@ -20,7 +20,7 @@ public class BeatService {
     private BeatRepository beatRepository;
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
 
     public void saveBeat(Beat beat) {

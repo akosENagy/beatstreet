@@ -20,14 +20,18 @@ public class InitializerBean {
         userService.saveUser(user);
 
         Map<String, String> songMetaData;
-        String[] songPaths = {"src/main/resources/public/songs/belabar_sunny9.mp3",
-                              "src/main/resources/public/songs/canton_benbient.mp3",
-                              "src/main/resources/public/songs/peppy_y=mx+b.mp3",
-                              "src/main/resources/public/songs/seedai_2d.mp3",
-                              "src/main/resources/public/songs/steve_counting-sheep.mp3"};
 
-        for (String path : songPaths) {
-            songMetaData = fileHandlerService.readMetaData(path);
+        String songDirectory = "src/main/resources/public/songs/";
+        String[] songPaths = {
+                "belabar_sunny9.mp3",
+                "canton_benbient.mp3",
+                "peppy_ymxb.mp3",
+                "seedai_2d.mp3",
+                "steve_counting-sheep.mp3"
+        };
+
+        for (String songPath : songPaths) {
+            songMetaData = fileHandlerService.readMetaData(songDirectory + songPath);
             Beat b = beatService.getBeatFromMetadata(songMetaData);
             b.setPriceInCents(500);
             user.addBeat(b);
