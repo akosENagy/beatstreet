@@ -355,3 +355,35 @@ body {
     -webkit-user-select: none;
     -o-user-select: none;
 }
+
+.nav-item {
+    list-style: none;
+    padding: 20px 10px;
+    color: #1182b2;
+}
+
+.nav-item a, .nav-item a:hover, .nav-item a:active, .nav-item a:visited,
+.navbar-brand:hover, .navbar-brand:active, .navbar-brand:visited {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+
+.navbar-brand {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    font-size: 2em;
+    color: #1182b2;
+}
+
+.navbar {
+    margin-bottom: 0;
+    background: #717171;
+    box-shadow: 1px 1px #717171;
+}
+
+.navbar-right {
+    padding-right: 30px; 
+}

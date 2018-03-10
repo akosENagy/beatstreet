@@ -16,9 +16,7 @@ app.musicplayer = {
         // Controls Listeners
         // ----------------------------------------------------------
         if (playBtn !== null) {
-            playBtn.addEventListener('click', function() {
-                togglePlay();
-            });
+            playBtn.addEventListener('click', togglePlay);
         }
 
         initNextAndPrevious();
