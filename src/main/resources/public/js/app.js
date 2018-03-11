@@ -24,6 +24,8 @@ app.musicplayer = {
         player.volume = 0.5;
         $volumeButton.click(toggleMute);
 
+        app.dom.addNavbarListener();
+
         $volumeSlider.addEventListener("click", setVolume);
         $volumeSlider.addEventListener("change", setVolume);
         $volumeSlider.addEventListener("input", setVolume);

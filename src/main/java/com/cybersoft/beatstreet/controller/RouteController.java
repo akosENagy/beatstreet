@@ -26,6 +26,10 @@ public class RouteController {
         return "index";
     }
 
+    @GetMapping(value = "/register")
+    public String renderRegistration() {
+        return "register";
+    }
 
 
     // GETTERS AND SETTERS
