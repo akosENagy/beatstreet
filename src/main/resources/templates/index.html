@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="utf-8">
     <meta name="author" content="cybersoft">
@@ -42,7 +43,12 @@
             <div class="col-md-8 col-md-offset-2" id="musicplayer">
                 <div class="container player-inside">
                     <div class="row player-header">
-                        <div class="player-header-container col-md-6 col-md-offset-7">
+                        <div sec:authorize="hasAuthority('ADMIN')" class="upload-button-container col-md-6">
+                            <a href="/upload" id="upload-link">
+                                <button class="btn btn-primary">Upload song</button>
+                            </a>
+                        </div>
+                        <div class="player-header-container col-md-6 offset-md-7">
                             <p id="cart-total">$0.00</p>
                             <i class="glyphicon glyphicon-shopping-cart"></i>
                             <button id="player-buynow">Buy now</button>

@@ -30,6 +30,8 @@ app.musicplayer = {
         $volumeSlider.addEventListener("change", setVolume);
         $volumeSlider.addEventListener("input", setVolume);
 
+        app.dom.checkUploadButton();
+
         // Controls & Sounds Methods
         // ----------------------------------------------------------
         function togglePlay() {

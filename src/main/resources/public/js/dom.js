@@ -24,5 +24,12 @@ app.dom = {
         }
 
         return true;
+	},
+
+	checkUploadButton: function() {
+		let uploadButton = document.getElementById("upload-link");
+		if (uploadButton === null) {
+			document.getElementsByClassName("player-header-container")[0].style.float = "right";
+		}
 	}
 };

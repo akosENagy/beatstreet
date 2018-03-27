@@ -82,7 +82,7 @@ body {
 }
 
 .player-header-container {
-    padding-left: 75px;
+    padding-left: 190px;
 }
 
 .player-controls {
@@ -423,4 +423,8 @@ body {
 
 .form-input {
     width: 100%;
+}
+
+#upload-link {
+    float: left;
 }
