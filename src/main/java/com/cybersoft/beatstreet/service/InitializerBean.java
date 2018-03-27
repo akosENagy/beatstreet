@@ -18,7 +18,9 @@ public class InitializerBean {
         user.setUsername("Admin");
         user.setProfileImagePath("noimage");
         user.setEmail("admin@ad.min");
-        user.setPassword("password");
+        user.setPassword(userService.getPasswordEncoder().encode("password"));
+        user.addRoles("ADMIN");
+        user.addRoles("USER");
         userService.saveUser(user);
 
         Map<String, String> songMetaData;
