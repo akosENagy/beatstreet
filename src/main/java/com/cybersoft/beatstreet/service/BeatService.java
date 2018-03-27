@@ -68,7 +68,7 @@ public class BeatService {
         int length = Integer.valueOf(metadata.get("length"));
         String title = metadata.get("title");
         String genre = metadata.get("genre");
-        User owner = userService.getUserByUsername(metadata.get("artist"));
+        User owner = userService.findByUsername(metadata.get("artist"));
         return new Beat(path, length, title, genre, owner);
     }
 

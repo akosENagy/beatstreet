@@ -35,15 +35,16 @@
     </nav>
     <div class="container form-container">
         <h2 class="form-header">Login</h2>
-        <h3 class="form-error" th:if="${error}" th:text="${error}"></h3>
+        <div id="err" th:if="${param.error}" class="alert alert-danger">Invalid username and/or password</div>
+        <div th:if="${param.logout}" class="alert alert-success">Logged out successfully</div>
         <form class="login-form" method="post" th:action="@{/login}">
             <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" name="username" id="username" class="form-input">
+                <input type="text" name="username" id="username" class="form-input" required>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" name="password" id="password" class="form-input">
+                <input type="password" name="password" id="password" class="form-input" required>
             </div>
             <input type="submit" class="form-submit" value="Login">
         </form>

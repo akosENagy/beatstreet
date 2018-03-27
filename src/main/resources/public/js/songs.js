@@ -88,7 +88,7 @@ app.songs = {
         let songOwner = infoContainer.children[2];
 
         songTitle.innerHTML = song["title"];
-        songOwner.innerHTML = song["owner"]["name"];
+        songOwner.innerHTML = song["owner"]["username"];
         songLength.innerHTML = (~~(song["lengthInSeconds"] / 60)) + ":" + song["lengthInSeconds"] % 60;
 
         if (song["lengthInSeconds"] % 60 === 0) songLength.innerHTML += "0";

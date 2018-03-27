@@ -15,8 +15,10 @@ public class InitializerBean {
     public InitializerBean(BeatService beatService, UserService userService, FileHandlerService fileHandlerService) {
 
         User user = new User();
-        user.setName("Admin");
+        user.setUsername("Admin");
         user.setProfileImagePath("noimage");
+        user.setEmail("admin@ad.min");
+        user.setPassword("password");
         userService.saveUser(user);
 
         Map<String, String> songMetaData;

@@ -30,13 +30,37 @@
 </head>
 
 <body>
-    <nav th:replace="navbar :: navbar-header">
+    <nav th:replace="navbar :: navbar-header(${user})">
     </nav>
-    <div class="welcome-container container-fluid">
-        <image class="welcome-img" src="images/header.jpg"></image>
-    </div>
     <div class="container form-container">
-        registration form
+        <h2 class="form-header">Register</h2>
+        <form class="registration-form" method="post" th:action="@{/register}" th:object="${user}">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <br />
+                <input type="text" th:field="*{username}" name="username" id="username" class="form-input" required>
+            </div>
+            <br />
+            <div class="form-group">
+                <label for="email">Email</label>
+                <br />
+                <input type="text" th:field="*{email}" name="email" id="email" class="form-input" required>
+            </div>
+            <br />
+            <div class="form-group">
+                <label for="password">Password</label>
+                <br />
+                <input type="password" th:field="*{password}" name="password" id="password" class="form-input" required>
+            </div>
+            <br />
+            <div class="form-group">
+                <label for="pw-confirm">Confirm password</label>
+                <br />
+                <input type="password" name="pw-confirm" id="pw-confirm" class="form-input" required>
+            </div>
+            <input type="submit" class="form-submit" value="Register"><br />
+            <a href="/login" id="login-link">Already have an account? Log in</a>
+        </form>
     </div>
 </body>
 </html>

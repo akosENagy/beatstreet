@@ -31,7 +31,7 @@
 </head>
 
 <body>
-    <nav th:replace="navbar :: navbar-header">
+    <nav th:replace="navbar :: navbar-header(${user})">
     </nav>
     <div class="welcome-container container-fluid">
         <image class="welcome-img" src="images/header.jpg"></image>

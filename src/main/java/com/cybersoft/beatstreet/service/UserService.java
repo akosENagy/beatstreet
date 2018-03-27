@@ -1,19 +1,29 @@
 package com.cybersoft.beatstreet.service;
 
 
+import com.cybersoft.beatstreet.model.Role;
 import com.cybersoft.beatstreet.model.User;
+import com.cybersoft.beatstreet.repository.RoleRepository;
 import com.cybersoft.beatstreet.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class UserService {
+public class UserService implements UserDetailsService {
+
+    private UserRepository userRepository;
+    private RoleRepository roleRepository;
 
     @Autowired
-    private UserRepository userRepository;
-
+    public UserService(UserRepository userRepository, RoleRepository roleRepository) {
+        this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
+    }
 
     public void saveUser(User user) {
         userRepository.save(user);
@@ -23,16 +33,31 @@ public class UserService {
         return userRepository.findOne(id);
     }
 
-    public User getUserByUsername(String username) {
-        List<User> users = userRepository.findAll();
-        for (User u : users) {
-            if (u.getName().equals(username)) {
-                return u;
-            }
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = findByUsername(username);
+        if (user == null) {
+            throw new UsernameNotFoundException(username);
         }
-        return null;
+
+        return new UserDetailsImpl(user);
     }
 
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
+
+    public void registerUser(User user) {
+        System.out.println(user.getId() + ", " + user.getUsername() + ", " + user.getPassword());
+
+        Role userRole = roleRepository.findByRole("USER");
+        if (userRole != null) {
+            user.getRoles().add(userRole);
+        } else {
+            user.addRoles("USER");
+        }
+
+        userRepository.save(user);
+    }
 
     // GETTERS AND SETTERS
 
@@ -42,5 +67,13 @@ public class UserService {
 
     public void setUserRepository(UserRepository userRepository) {
         this.userRepository = userRepository;
+    }
+
+    public RoleRepository getRoleRepository() {
+        return roleRepository;
+    }
+
+    public void setRoleRepository(RoleRepository roleRepository) {
+        this.roleRepository = roleRepository;
     }
 }
