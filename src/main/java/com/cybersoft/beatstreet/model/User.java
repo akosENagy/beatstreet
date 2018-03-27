@@ -2,6 +2,7 @@ package com.cybersoft.beatstreet.model;
 
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -27,6 +28,7 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    @JsonIgnore
     @ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.EAGER )
     @JoinTable(
             name = "users_roles",
