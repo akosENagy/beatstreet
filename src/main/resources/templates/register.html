@@ -26,6 +26,7 @@
     <script src="/js/genres.js"></script>
     <script src="/js/songs.js"></script>
     <script src="/js/app.js"></script>
+    <script src="/js/dom.js"></script>
     <script src="/js/main.js"></script>
 </head>
 
@@ -34,7 +35,7 @@
     </nav>
     <div class="container form-container">
         <h2 class="form-header">Register</h2>
-        <form class="registration-form" method="post" th:action="@{/register}" th:object="${user}">
+        <form class="registration-form" method="post" th:action="@{/register}" th:object="${user}" onsubmit="return app.dom.checkPasswords()">
             <div class="form-group">
                 <label for="username">Username</label>
                 <br />
