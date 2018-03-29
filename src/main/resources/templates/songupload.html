@@ -31,24 +31,33 @@
 </head>
 
 <body>
-    <nav th:replace="navbar :: navbar-header(${user})">
-    </nav>
-    <div class="container form-container">
-        <h2 class="form-header">Login</h2>
-        <div id="err" th:if="${param.error}" class="alert alert-danger">Invalid username and/or password</div>
-        <div th:if="${param.logout}" class="alert alert-success">Logged out successfully</div>
-        <form class="login-form" method="post" th:action="@{/login}">
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" name="username" id="username" class="form-input" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" class="form-input" required>
-            </div>
-            <input type="submit" class="form-submit btn btn-primary" value="Log in">
-        </form>
-        <a href="/register" id="register-link">Register a new account</a>
-    </div>
+<nav th:replace="navbar :: navbar-header(${user})">
+</nav>
+<div class="container form-container">
+    <h2 class="form-header">Upload a beat</h2>
+    <form class="upload-form" method="post" th:action="@{/upload}">
+        <div class="form-group">
+            <label for="file">File</label>
+            <input type="file" name="file" id="file" class="form-input" required>
+        </div>
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title" class="form-input" required>
+        </div>
+        <div class="form-group">
+            <label for="genre-dropdown">Genre</label>
+            <select name="genre" id="genre-dropdown" onchange="app.dom.checkOtherGenre()" class="form-input" required>
+                <option th:each="genre : ${genres}" th:text="${genre}" th:value="${genre}">Genre</option>
+                <option id="genre-other-option" value="Other">Other</option>
+            </select>
+            <input type="text" name="genre-other" id="genre-other" class="form-input" hidden placeholder="Please enter the genre">
+        </div>
+        <div class="form-group">
+            <label for="price">Price ($)</label>
+            <input type="text" name="price" id="price" class="form-input" required>
+        </div>
+        <input type="submit" class="form-submit btn btn-primary" value="Upload">
+    </form>
+</div>
 </body>
 </html>

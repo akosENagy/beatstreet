@@ -44,6 +44,13 @@ public class RouteController {
     @GetMapping(value = "/login")
     public String renderLogin() { return "login"; }
 
+    @GetMapping(value = "/upload-song")
+    public String renderUploadPage(Model model) {
+        model.addAttribute("genres", beatService.getGenres());
+        return "songupload";
+    }
+
+
     // GETTERS AND SETTERS
 
     public UserService getUserService() {

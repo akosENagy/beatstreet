@@ -40,15 +40,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("/")
-                    .permitAll()
+                    .antMatchers("/").permitAll()
+                    .antMatchers("/upload-song").hasAuthority("ADMIN")
                     .and()
                 .formLogin()
-                    .loginPage("/login")
-                    .permitAll()
+                    .loginPage("/login").permitAll()
                     .and()
                 .logout()
-                    .logoutSuccessUrl("/login?logout")
-                    .permitAll();
+                    .logoutSuccessUrl("/login?logout").permitAll();
     }
 }

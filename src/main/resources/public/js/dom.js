@@ -31,5 +31,16 @@ app.dom = {
 		if (uploadButton === null) {
 			document.getElementsByClassName("player-header-container")[0].style.float = "right";
 		}
+	},
+
+	checkOtherGenre: function() {
+		let genreDropdown = document.getElementById("genre-dropdown");
+        let $otherInput = $("#genre-other");
+
+        if (genreDropdown.options[genreDropdown.selectedIndex].value.trim().toLowerCase() == "other") {
+            $otherInput.show(100);
+        } else {
+			$otherInput.hide(100);
+		}
 	}
 };
