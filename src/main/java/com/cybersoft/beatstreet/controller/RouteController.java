@@ -1,15 +1,22 @@
 package com.cybersoft.beatstreet.controller;
 
+import com.cybersoft.beatstreet.model.Beat;
 import com.cybersoft.beatstreet.model.User;
 import com.cybersoft.beatstreet.service.BeatService;
+import com.cybersoft.beatstreet.service.UserDetailsImpl;
 import com.cybersoft.beatstreet.service.UserService;
+import com.mpatric.mp3agic.InvalidDataException;
+import com.mpatric.mp3agic.UnsupportedTagException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.security.Principal;
 import java.util.Set;
 
 
@@ -21,6 +28,7 @@ public class RouteController {
 
     @Autowired
     private BeatService beatService;
+
 
     @GetMapping(value = "/")
     public String renderRoot(Model model) {
@@ -47,9 +55,30 @@ public class RouteController {
     @GetMapping(value = "/upload-song")
     public String renderUploadPage(Model model) {
         model.addAttribute("genres", beatService.getGenres());
+        model.addAttribute("beat", new Beat());
         return "songupload";
     }
 
+    @PostMapping(value = "/upload-song")
+    public String uploadSong(@ModelAttribute Beat beat,
+                             @RequestParam("file") MultipartFile songfile,
+                             @RequestParam("genre-other") String genre,
+                             Principal principal) throws IOException, InvalidDataException, UnsupportedTagException {
+
+        beat.setPriceInCents(beat.getPriceInCents() * 100); // it's entered in $
+        User user = userService.findByUsername(principal.getName());
+        beat.setOwner(user);
+        user.addBeat(beat);
+
+        System.out.println(beat.getGenre());
+        if (beat.getGenre().equals("Other")) {
+            beat.setGenre(genre);
+        }
+
+        beatService.uploadSong(beat, songfile);
+
+        return "redirect:/";
+    }
 
     // GETTERS AND SETTERS
 

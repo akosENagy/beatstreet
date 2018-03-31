@@ -18,6 +18,10 @@ public class FileHandlerService {
     @Autowired
     private UserService userService;
 
+    public int getLengthOfFile(String filePath) throws InvalidDataException, IOException, UnsupportedTagException {
+        return Math.toIntExact(new Mp3File(filePath).getLengthInSeconds());
+    }
+
     public Map<String, String> readMetaData(String filePath) {
         Map<String, String> metadata = new HashMap<>();
         try {
