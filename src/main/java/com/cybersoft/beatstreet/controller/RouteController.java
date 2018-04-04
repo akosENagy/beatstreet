@@ -3,18 +3,15 @@ package com.cybersoft.beatstreet.controller;
 import com.cybersoft.beatstreet.model.Beat;
 import com.cybersoft.beatstreet.model.User;
 import com.cybersoft.beatstreet.service.BeatService;
-import com.cybersoft.beatstreet.service.UserDetailsImpl;
 import com.cybersoft.beatstreet.service.UserService;
 import com.mpatric.mp3agic.InvalidDataException;
 import com.mpatric.mp3agic.UnsupportedTagException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.security.Principal;
 import java.util.Set;
