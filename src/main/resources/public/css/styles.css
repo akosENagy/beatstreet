@@ -79,6 +79,7 @@ body {
 
 .player-header-container {
     padding-left: 190px;
+    width: 55%;
 }
 
 .player-controls {
@@ -428,4 +429,8 @@ body {
 
 #genre-other {
     margin-top: 10px;
+}
+
+#cartitems {
+    color: #e1e1e1;
 }
