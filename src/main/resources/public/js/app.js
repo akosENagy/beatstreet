@@ -31,6 +31,7 @@ app.musicplayer = {
         $volumeSlider.addEventListener("input", setVolume);
 
         app.dom.checkUploadButton();
+        app.cart.getCart();
 
         // Controls & Sounds Methods
         // ----------------------------------------------------------

@@ -77,7 +77,8 @@ app.songs = {
         newElement.removeAttribute("id");
 
         let songElementLeft = newElement.children[0];
-        //let songElementRight = newElement.children[1];
+        let songElementRight = newElement.children[1];
+        let addToCartButton = songElementRight.children[0];
 
         // let image = songElementLeft.children[0];
         // image.setAttribute("src", song["path"]); if image exists?
@@ -92,6 +93,10 @@ app.songs = {
         songLength.innerHTML = (~~(song["lengthInSeconds"] / 60)) + ":" + song["lengthInSeconds"] % 60;
 
         if (song["lengthInSeconds"] % 60 === 0) songLength.innerHTML += "0";
+
+        addToCartButton.addEventListener("click", function() {
+            app.cart.addSongToCart(song["id"]);
+        });
 
         newElement.setAttribute("data-path", song["path"]);
         newElement.style.display = "inline-block";
