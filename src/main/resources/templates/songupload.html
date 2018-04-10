@@ -35,7 +35,7 @@
 </nav>
 <div class="container form-container">
     <h2 class="form-header">Upload a beat</h2>
-    <form class="upload-form" enctype="multipart/form-data" th:object="${beat}" method="post" th:action="@{/upload-song}">
+    <form class="upload-form" enctype="multipart/form-data" onsubmit="return app.songs.setPriceOnUpload()" th:object="${beat}" method="post" th:action="@{/upload-song}">
         <div class="form-group">
             <label for="file">File</label>
             <input type="file" name="file" id="file" class="form-input" required>

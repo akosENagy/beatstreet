@@ -62,7 +62,7 @@ public class RouteController {
                              @RequestParam("genre-other") String genre,
                              Principal principal) throws IOException, InvalidDataException, UnsupportedTagException {
 
-        beat.setPriceInCents(beat.getPriceInCents() * 100); // it's entered in $
+        System.out.println(beat.getPriceInCents());
         User user = userService.findByUsername(principal.getName());
         beat.setOwner(user);
         user.addBeat(beat);

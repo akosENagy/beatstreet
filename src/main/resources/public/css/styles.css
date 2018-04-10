@@ -434,3 +434,7 @@ body {
 #cartitems {
     color: #e1e1e1;
 }
+
+.upload-button-container {
+    width: 45%;
+}

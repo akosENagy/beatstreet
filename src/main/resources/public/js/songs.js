@@ -103,5 +103,11 @@ app.songs = {
         newElement.addEventListener("click", app.songs.loadSong);
         document.getElementById("player-main-body").appendChild(newElement);
         document.getElementById("player-main-body").appendChild(newElement);
+    },
+
+    setPriceOnUpload: function() {
+        let $price = $("#price");
+        $price.val($price.val() * 100);
+        return true;
     }
 };
