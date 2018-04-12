@@ -147,10 +147,6 @@ body {
     box-shadow: 0 2px;
 }
 
-.playerbody-song {
-    margin: 0;
-    text-align: left;
-}
 
 .playerbody-song:not(.selected-song):hover {
     background: #414141;
@@ -171,13 +167,13 @@ body {
     padding: 0;
 }
 
-.glyphicon-plus {
+.glyphicon-plus, .glyphicon-minus {
     color: #818181;
     padding-top: 13px;
     padding-left: 15px;
 }
 
-.glyphicon-plus:hover {
+.glyphicon-plus:hover,.glyphicon-minus:hover {
     color: #c1c1c1;
 }
 
@@ -216,6 +212,8 @@ body {
 }
 
 .playerbody-song {
+    margin: 0;
+    text-align: left;
     width: 100%;
 }
 
@@ -437,4 +435,8 @@ body {
 
 .upload-button-container {
     width: 45%;
+}
+
+.added {
+    border: solid 1px #1182b2;
 }

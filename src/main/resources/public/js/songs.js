@@ -79,6 +79,7 @@ app.songs = {
         let songElementLeft = newElement.children[0];
         let songElementRight = newElement.children[1];
         let addToCartButton = songElementRight.children[0];
+        let removeFromCartButton = songElementRight.children[1];
 
         // let image = songElementLeft.children[0];
         // image.setAttribute("src", song["path"]); if image exists?
@@ -94,14 +95,24 @@ app.songs = {
 
         if (song["lengthInSeconds"] % 60 === 0) songLength.innerHTML += "0";
 
-        addToCartButton.addEventListener("click", function() {
-            app.cart.addSongToCart(song["id"]);
-        });
-
         newElement.setAttribute("data-path", song["path"]);
         newElement.style.display = "inline-block";
         newElement.addEventListener("click", app.songs.loadSong);
-        document.getElementById("player-main-body").appendChild(newElement);
+
+        addToCartButton.addEventListener("click", function() {
+            app.cart.addSongToCart(song["id"], newElement);
+        });
+
+        removeFromCartButton.addEventListener("click", function() {
+           app.cart.removeSongFromCart(song["id"], newElement);
+        });
+
+        if (app.cart.contains(song["id"])) {
+            newElement.classList.add("added");
+            addToCartButton.style.display = "none";
+            removeFromCartButton.style.display = "inline-block";
+        }
+
         document.getElementById("player-main-body").appendChild(newElement);
     },
 
