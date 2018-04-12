@@ -51,7 +51,7 @@
                         </div>
                         <div class="player-header-container col-md-6 offset-md-7">
                             <p id="cart-total">$0.00</p>
-                            <i class="glyphicon glyphicon-shopping-cart"><span id="cartitems">0</span></i>
+                            <i id="cart-button" class="glyphicon glyphicon-shopping-cart"><span id="cartitems">0</span></i>
                             <button class="btn btn-primary" id="player-buynow">Buy now</button>
                         </div>
                     </div>
@@ -101,6 +101,29 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div id="cart-modal">
+        <div id="modal-content">
+            <span class="close">&times;</span>
+            <h3 id="modal-header">Your cart</h3>
+            <div>
+                <table id="cart-modal-table">
+                    <thead id="cart-modal-header">
+                        <tr>
+                            <th>Title</th>
+                            <th>Genre</th>
+                            <th>Artist</th>
+                            <th>Price ($)</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cart-modal-songs">
+
+                    </tbody>
+                </table>
+                <button class="btn btn-primary" id="modal-checkout">Go to checkout</button>
             </div>
         </div>
     </div>

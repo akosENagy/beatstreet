@@ -11,7 +11,9 @@ app.musicplayer = {
             playBtn = document.getElementById('play-button'),
             $volumeSlider = $("#volume-slider")[0],
             $volumeButton = $("#volume-control"),
-            lastVolume = 0.5;
+            lastVolume = 0.5,
+            cartButton = document.getElementById("cart-button"),
+            cartModal = document.getElementById("cart-modal");
 
         // Controls Listeners
         // ----------------------------------------------------------
@@ -32,6 +34,18 @@ app.musicplayer = {
 
         app.dom.checkUploadButton();
         app.cart.getCart();
+
+        cartButton.addEventListener("click", app.cart.displayModal);
+
+        $(".close").click(function() {
+           cartModal.style.display = "none";
+        });
+
+        window.onclick = function(event) {
+            if (event.target == cartModal) {
+                cartModal.style.display = "none";
+            }
+        };
 
         // Controls & Sounds Methods
         // ----------------------------------------------------------
