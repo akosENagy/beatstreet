@@ -42,5 +42,21 @@ app.dom = {
         } else {
 			$otherInput.hide(100);
 		}
+	},
+
+	findSongFromModalRow: function(modalRow) {
+		let songTitle = modalRow.children[0].innerHTML;
+
+		let songRows = [].slice.call(document.getElementsByClassName("playerbody-song"));
+		let toReturn = null;
+		songRows.forEach(function(songRow) {
+            let title = songRow.children[0].children[1].children[0].innerHTML;
+
+            if (songTitle === title) {
+            	toReturn = songRow;
+			}
+		});
+
+		return toReturn;
 	}
 };

@@ -18,14 +18,18 @@ app.cart = {
 
     removeSongFromCart: function(beatId, songElement) {
         $.get("http://localhost:60001/removefromcart/" + beatId, app.cart.setCart);
-        let songElementRight = songElement.children[1];
-        let addToCartButton = songElementRight.children[0];
-        let removeFromCartButton = songElementRight.children[1];
 
-        addToCartButton.style.display = "inline-block";
-        removeFromCartButton.style.display = "none";
+        if (songElement !== null) {
+            let songElementRight = songElement.children[1];
+            let addToCartButton = songElementRight.children[0];
+            let removeFromCartButton = songElementRight.children[1];
 
-        songElement.classList.remove("added");
+            addToCartButton.style.display = "inline-block";
+            removeFromCartButton.style.display = "none";
+
+            songElement.classList.remove("added");
+        }
+
         app.cart.songs.splice(app.cart.songs.indexOf(beatId), 1);
     },
 
@@ -89,11 +93,23 @@ app.cart = {
             let removeButton = document.createElement("i");
             removeButton.classList.add("glyphicon");
             removeButton.classList.add("glyphicon-remove");
+            removeButton.addEventListener("click", function() {
+                app.cart.modalRemove(song["id"], modalRow);
+            });
+
             remove.appendChild(removeButton);
             modalRow.appendChild(remove);
 
             modalRow.classList.add("modal-data-row");
             modal.appendChild(modalRow);
         });
+    },
+
+    modalRemove: function(songId, modalRow) {
+        let modal = document.getElementById("cart-modal-songs");
+        modal.removeChild(modalRow);
+
+        let songElement = app.dom.findSongFromModalRow(modalRow);
+        app.cart.removeSongFromCart(songId, songElement);
     }
 };

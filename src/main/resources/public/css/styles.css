@@ -173,8 +173,12 @@ body {
     padding-left: 15px;
 }
 
-.glyphicon-plus:hover,.glyphicon-minus:hover, .glyphicon-remove:hover {
+.glyphicon-plus:hover,.glyphicon-minus:hover {
     color: #c1c1c1;
+}
+
+.glyphicon-remove:hover {
+    color: #292e33;
 }
 
 .glyphicon-remove {
