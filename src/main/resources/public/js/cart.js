@@ -41,6 +41,13 @@ app.cart = {
         let $cartTotal = $("#cart-total");
         let price = (cart["totalInCents"] / 100).toFixed(2);
         $cartTotal.html("$" + price);
+        $("#cart-modal-total").html($cartTotal.html());
+        let checkoutButton = document.getElementById("modal-checkout");
+        if (price == 0) {
+            checkoutButton.setAttribute("disabled", "true");
+        } else {
+            checkoutButton.removeAttribute("disabled");
+        }
 
         let $cartItems = $("#cartitems");
         $cartItems.html(cart["numberOfItems"]);
@@ -102,6 +109,9 @@ app.cart = {
 
             modalRow.classList.add("modal-data-row");
             modal.appendChild(modalRow);
+
+            let total = document.getElementById("cart-total").innerHTML;
+            document.getElementById("cart-modal-total").innerHTML = total;
         });
     },
 
