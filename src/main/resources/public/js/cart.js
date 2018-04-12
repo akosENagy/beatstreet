@@ -40,11 +40,12 @@ app.cart = {
 
         let $cartItems = $("#cartitems");
         $cartItems.html(cart["numberOfItems"]);
+        app.cart.songs = cart["beats"];
     },
 
     contains: function(beatId) {
         for (let i = 0; i < app.cart.songs.length; i++) {
-            if (app.cart.songs[i] === beatId) {
+            if (app.cart.songs[i]["id"] === beatId) {
                 return true;
             }
         }
