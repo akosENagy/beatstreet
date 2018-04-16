@@ -89,7 +89,7 @@ public class BeatService {
         Files.write(toStore.toPath(), bytes);
 
         beat.setLengthInSeconds(fileHandlerService.getLengthOfFile(toStore.toPath().toString()));
-        beat.setPath(UPLOAD_FOLDER.substring(43) + toStore.getName());
+        beat.setPath(UPLOAD_FOLDER.substring(UPLOAD_FOLDER.indexOf("/src/main/") + 1) + toStore.getName());
 
         userService.saveUser(beat.getOwner());
     }

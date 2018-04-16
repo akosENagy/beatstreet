@@ -10,18 +10,21 @@ app.genres = {
     },
 
     loadGenre: function () {
-        app.genres.selectGenre($(this));
-        let genre = this.children[0].innerHTML;
-        $.get("http://localhost:60001/api/genres/" + genre, function (data) {
-            let playerBody = document.getElementById("player-main-body");
-            while (playerBody.firstChild) {
-                playerBody.removeChild(playerBody.firstChild);
-            }
+        if (!$(this).hasClass("selected-genre")) {
+            app.genres.selectGenre($(this));
+            let genre = this.children[0].innerHTML;
 
-            for (let song of data) {
-                app.songs.buildSongElement(song);
-            }
-        });
+            $.get("http://localhost:60001/api/genres/" + genre, function (data) {
+                let playerBody = document.getElementById("player-main-body");
+                while (playerBody.firstChild) {
+                    playerBody.removeChild(playerBody.firstChild);
+                }
+
+                for (let song of data) {
+                    app.songs.buildSongElement(song);
+                }
+            });
+        }
     },
 
     selectGenre: function($genreElement) {

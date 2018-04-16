@@ -3,10 +3,10 @@ app.dom = {
 	addNavbarListener: function() {
 		let $window = $(window);
 		$window.scroll(function() {
-			if ($window.scrollTop() > 650) {
+			if ($window.scrollTop() > 550) {
 				$('.navbar').fadeOut(300);
 			}
-			if ($window.scrollTop() < 650) {
+			if ($window.scrollTop() < 550) {
 				$('.navbar').fadeIn(300);
 			}
 		});

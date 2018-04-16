@@ -24,6 +24,7 @@
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="/css/styles.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Gugi|Oswald" rel="stylesheet">
     <script src="/js/genres.js"></script>
     <script src="/js/cart.js"></script>
     <script src="/js/songs.js"></script>
@@ -36,20 +37,25 @@
     <nav th:replace="navbar :: navbar-header(${user})">
     </nav>
     <div class="welcome-container container-fluid">
-        <image class="welcome-img" src="images/header.jpg"></image>
+        <div class="welcome-img">
+            <div id="header-text">
+                <h1 id="header-h1">beatstreet<i id="header-dot">.</i></h1>
+            </div>
+        </div>
     </div>
     <div class="container player-container">
-        <h2 class="beatstoretext">BEAT STORE</h2>
         <div class="row">
             <div class="col-md-8 col-md-offset-2" id="musicplayer">
                 <div class="container player-inside">
                     <div class="row player-header">
+                        <div id="player-logo" class="col-md-5">beatstreet<i id="player-logo-dot">.</i>
+                        </div>
                         <div sec:authorize="hasAuthority('ADMIN')" class="upload-button-container col-md-6">
                             <a href="/upload-song" id="upload-link">
                                 <button class="btn btn-primary">Upload song</button>
                             </a>
                         </div>
-                        <div class="player-header-container col-md-6 offset-md-7">
+                        <div class="player-header-container col-md-6">
                             <p id="cart-total">$0.00</p>
                             <i id="cart-button" class="glyphicon glyphicon-shopping-cart"><span id="cartitems">0</span></i>
                             <button class="btn btn-primary" id="player-buynow">Buy now</button>
