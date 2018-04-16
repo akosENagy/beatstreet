@@ -43,60 +43,62 @@
             </div>
         </div>
     </div>
-    <div class="container player-container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2" id="musicplayer">
-                <div class="container player-inside">
-                    <div class="row player-header">
-                        <div id="player-logo" class="col-md-5">beatstreet<i id="player-logo-dot">.</i>
-                        </div>
-                        <div class="player-header-container col-md-6">
-                            <p id="cart-total">$0.00</p>
-                            <i id="cart-button" class="glyphicon glyphicon-shopping-cart"><span id="cartitems">0</span></i>
-                            <button class="btn btn-primary" id="player-buynow">Buy now</button>
-                        </div>
-                    </div>
-                    <div class="row player-body">
-                        <div class="col-md-4 player-sidebar container">
-                            <div class="row">
-                                <p id="genres-header">Genres</p>
+    <div id="frontpage-body">
+        <div class="container player-container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2" id="musicplayer">
+                    <div class="container player-inside">
+                        <div class="row player-header">
+                            <div id="player-logo" class="col-md-5">beatstreet<i id="player-logo-dot">.</i>
                             </div>
-                            <div class="row sidebar-genres-container">
-                                <div th:each="genre : ${genres}" class="sidebar-genre">
-                                    <p class="sidebar-genre-text" th:text="${genre}">Genre</p>
-                                </div>
+                            <div class="player-header-container col-md-6">
+                                <p id="cart-total">$0.00</p>
+                                <i id="cart-button" class="glyphicon glyphicon-shopping-cart"><span id="cartitems">0</span></i>
+                                <button class="btn btn-primary" id="player-buynow">Buy now</button>
                             </div>
                         </div>
-                        <div class="col-md-8 player-main" id="player-main-body">
-
-                        </div>
-                    </div>
-                    <div class="row player-controls">
-                        <div class="player-buttons col-md-4">
-                            <i class="player-control glyphicon glyphicon-fast-backward" id="prev-button"></i>
-                            <i class="player-control glyphicon glyphicon-play" id="play-button"></i>
-                            <i class="player-control glyphicon glyphicon-fast-forward" id="next-button"></i>
-                            <i class="player-control glyphicon glyphicon-volume-up" id="volume-control"></i>
-                            <input id="volume-slider" type="range" orient="vertical" min="0" max="100" value="50" step="1"/>
-                        </div>
-                        <div class="player-progress col-md-8">
-                            <div id="player-currentsong">
-                                <div class="player-currentsong-info-container container-fluid">
-                                    <image class="player-currentsong-info player-currentsong-image" src="images/default-song-image.png"></image>
-                                    <h3 class="player-currentsong-info player-currentsong-title">Title</h3>
-                                    <p id="song-made-by">by</p>
-                                    <p class="player-currentsong-info player-currentsong-owner">Owner</p>
+                        <div class="row player-body">
+                            <div class="col-md-4 player-sidebar container">
+                                <div class="row">
+                                    <p id="genres-header">Genres</p>
                                 </div>
-                                <div class="player-currentsong-progress-container">
-                                    <div class="audio-wrapper" id="audio-container">
-                                        <audio src="http://www.lukeduncan.me/oslo.mp3" id="currentsong-audio" ontimeupdate="app.musicplayer.initProgressBar()">
-                                        </audio>
+                                <div class="row sidebar-genres-container">
+                                    <div th:each="genre : ${genres}" class="sidebar-genre">
+                                        <p class="sidebar-genre-text" th:text="${genre}">Genre</p>
                                     </div>
-                                    <p class="player-currentsong-info" id="player-currentsong-currenttime">0:00</p>
-                                    <span id="seekObjContainer">
-                                      <progress id="seekObj" value="0" max="1"></progress>
-                                    </span>
-                                    <p class="player-currentsong-info" id="player-currentsong-length">0:00</p>
+                                </div>
+                            </div>
+                            <div class="col-md-8 player-main" id="player-main-body">
+
+                            </div>
+                        </div>
+                        <div class="row player-controls">
+                            <div class="player-buttons col-md-4">
+                                <i class="player-control glyphicon glyphicon-fast-backward" id="prev-button"></i>
+                                <i class="player-control glyphicon glyphicon-play" id="play-button"></i>
+                                <i class="player-control glyphicon glyphicon-fast-forward" id="next-button"></i>
+                                <i class="player-control glyphicon glyphicon-volume-up" id="volume-control"></i>
+                                <input id="volume-slider" type="range" orient="vertical" min="0" max="100" value="50" step="1"/>
+                            </div>
+                            <div class="player-progress col-md-8">
+                                <div id="player-currentsong">
+                                    <div class="player-currentsong-info-container container-fluid">
+                                        <image class="player-currentsong-info player-currentsong-image" src="images/default-song-image.png"></image>
+                                        <h3 class="player-currentsong-info player-currentsong-title">Title</h3>
+                                        <p id="song-made-by">by</p>
+                                        <p class="player-currentsong-info player-currentsong-owner">Owner</p>
+                                    </div>
+                                    <div class="player-currentsong-progress-container">
+                                        <div class="audio-wrapper" id="audio-container">
+                                            <audio src="http://www.lukeduncan.me/oslo.mp3" id="currentsong-audio" ontimeupdate="app.musicplayer.initProgressBar()">
+                                            </audio>
+                                        </div>
+                                        <p class="player-currentsong-info" id="player-currentsong-currenttime">0:00</p>
+                                        <span id="seekObjContainer">
+                                          <progress id="seekObj" value="0" max="1"></progress>
+                                        </span>
+                                        <p class="player-currentsong-info" id="player-currentsong-length">0:00</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
