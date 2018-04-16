@@ -105,7 +105,8 @@ body {
 }
 
 .player-header-container {
-    padding-left: 190px;
+    padding-left: 220px;
+    padding-right: 0;
     width: 55%;
 }
 
@@ -456,6 +457,7 @@ body {
 
 .form-header {
     color: #5680af;
+    font-family: 'Black Han Sans', sans-serif;
 }
 
 label {
@@ -464,10 +466,10 @@ label {
 
 .form-input {
     width: 100%;
-}
-
-#upload-link {
-    float: left;
+    border-radius: 5px;
+    padding: 3px 5px;
+    color: #2379da;
+    font-weight: bold;
 }
 
 #genre-other {
