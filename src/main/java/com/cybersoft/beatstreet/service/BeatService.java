@@ -94,6 +94,14 @@ public class BeatService {
         userService.saveUser(beat.getOwner());
     }
 
+    public List<Beat> getRecents() {
+        List<Beat> beats = beatRepository.findTop5ByOrderByIdDesc();
+        for (Beat beat : beats) {
+            beat.setPath(beat.getPath().replace("src/main/resources/public", ""));
+        }
+        return beats;
+    }
+
     // GETTERS AND SETTERS
 
     public BeatRepository getBeatRepository() {

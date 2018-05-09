@@ -44,6 +44,15 @@ public class AjaxController {
         return beats;
     }
 
+    @GetMapping(value = "/api/recents")
+    public List<Beat> recentSongs() {
+        List<Beat> beats = beatService.getRecents();
+        for (Beat beat : beats) {
+            beat.setPath(beat.getPath().replace("src/main/resources/public", ""));
+        }
+        return beats;
+    }
+
     @GetMapping("/addtocart/{beatId}")
     public ShoppingCart addToCart(@PathVariable(value="beatId") String beatId) {
         int id = Integer.valueOf(beatId);

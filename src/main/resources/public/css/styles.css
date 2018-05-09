@@ -603,4 +603,24 @@ label {
     height: 50px;
     padding-top: 10px;
     border-top: solid 2px #404040;
+    font-weight: bold;
+}
+
+#most-recent {
+    margin-bottom: 0;
+    color: #d7d8de;
+    border-bottom: solid 1px #515151;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 10px 0;
+    cursor: pointer;
+}
+
+#most-recent:hover {
+    background-color: #414141;
+}
+
+.selected {
+    background-color: #414141;
 }

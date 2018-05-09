@@ -25,6 +25,7 @@ app.genres = {
                 }
 
                 $("#player-body-header").text(genre);
+                $("#most-recent").removeClass("selected");
             });
         }
     },

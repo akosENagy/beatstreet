@@ -34,6 +34,8 @@ app.musicplayer = {
 
         app.dom.checkUploadButton();
         app.cart.getCart();
+        app.songs.addRecentSongs();
+        $('#most-recent').click(app.songs.addRecentSongs);
 
         cartButton.addEventListener("click", app.cart.displayModal);
 

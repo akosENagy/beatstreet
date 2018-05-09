@@ -32,7 +32,9 @@ app.cart = {
         }
 
         app.cart.songs.splice(app.cart.songs.indexOf(beatId), 1);
-        event.stopPropagation();
+        if (event !== null) {
+            event.stopPropagation();
+        }
     },
 
     getCart: function() {
@@ -122,6 +124,6 @@ app.cart = {
         modal.removeChild(modalRow);
 
         let songElement = app.dom.findSongFromModalRow(modalRow);
-        app.cart.removeSongFromCart(songId, songElement);
+        app.cart.removeSongFromCart(null, songId, songElement);
     }
 };

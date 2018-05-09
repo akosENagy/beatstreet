@@ -120,5 +120,28 @@ app.songs = {
         let $price = $("#price");
         $price.val($price.val() * 100);
         return true;
+    },
+
+    addRecentSongs: function() {
+        if (!($("#player-body-header").text() === "Most recent")) {
+            let selectedGenre = app.musicplayer.selectedGenre;
+            if (selectedGenre !== null) {
+                selectedGenre.removeClass("selected-genre");
+            }
+
+            $.get("http://localhost:60001/api/recents/", function (data) {
+                let playerBodySongs = document.getElementById("player-body-songs");
+                while (playerBodySongs.firstChild) {
+                    playerBodySongs.removeChild(playerBodySongs.firstChild);
+                }
+
+                for (let song of data) {
+                    app.songs.buildSongElement(song);
+                }
+
+                $("#player-body-header").text("Most recent");
+                $("#most-recent").addClass("selected");
+            });
+        }
     }
 };
