@@ -99,12 +99,12 @@ app.songs = {
         newElement.style.display = "inline-block";
         newElement.addEventListener("click", app.songs.loadSong);
 
-        addToCartButton.addEventListener("click", function() {
-            app.cart.addSongToCart(song["id"], newElement);
+        addToCartButton.addEventListener("click", function(e) {
+            app.cart.addSongToCart(e, song["id"], newElement);
         });
 
-        removeFromCartButton.addEventListener("click", function() {
-           app.cart.removeSongFromCart(song["id"], newElement);
+        removeFromCartButton.addEventListener("click", function(e) {
+           app.cart.removeSongFromCart(e, song["id"], newElement);
         });
 
         if (app.cart.contains(song["id"])) {

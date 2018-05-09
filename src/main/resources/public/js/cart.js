@@ -2,7 +2,7 @@ app.cart = {
 
     songs: [],
 
-    addSongToCart: function(beatId, songElement) {
+    addSongToCart: function(event, beatId, songElement) {
         $.get("http://localhost:60001/addtocart/" + beatId, app.cart.setCart);
         let songElementRight = songElement.children[1];
 
@@ -14,9 +14,10 @@ app.cart = {
 
         songElement.classList.add("added");
         app.cart.songs.push(beatId);
+        event.stopPropagation();
     },
 
-    removeSongFromCart: function(beatId, songElement) {
+    removeSongFromCart: function(event, beatId, songElement) {
         $.get("http://localhost:60001/removefromcart/" + beatId, app.cart.setCart);
 
         if (songElement !== null) {
@@ -31,6 +32,7 @@ app.cart = {
         }
 
         app.cart.songs.splice(app.cart.songs.indexOf(beatId), 1);
+        event.stopPropagation();
     },
 
     getCart: function() {
