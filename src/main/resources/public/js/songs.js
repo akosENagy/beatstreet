@@ -113,7 +113,7 @@ app.songs = {
             removeFromCartButton.style.display = "inline-block";
         }
 
-        document.getElementById("player-main-body").appendChild(newElement);
+        document.getElementById("player-body-songs").appendChild(newElement);
     },
 
     setPriceOnUpload: function() {

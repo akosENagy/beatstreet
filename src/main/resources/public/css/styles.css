@@ -595,3 +595,12 @@ label {
     position: relative;
     background-color: #d7d8de;
 }
+
+#player-body-header {
+    color: #d8d9df;
+    background: #424242;
+    margin: 0;
+    height: 50px;
+    padding-top: 10px;
+    border-top: solid 2px #404040;
+}

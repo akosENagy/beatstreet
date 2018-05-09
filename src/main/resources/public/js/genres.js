@@ -15,14 +15,16 @@ app.genres = {
             let genre = this.children[0].innerHTML;
 
             $.get("http://localhost:60001/api/genres/" + genre, function (data) {
-                let playerBody = document.getElementById("player-main-body");
-                while (playerBody.firstChild) {
-                    playerBody.removeChild(playerBody.firstChild);
+                let playerBodySongs = document.getElementById("player-body-songs");
+                while (playerBodySongs.firstChild) {
+                    playerBodySongs.removeChild(playerBodySongs.firstChild);
                 }
 
                 for (let song of data) {
                     app.songs.buildSongElement(song);
                 }
+
+                $("#player-body-header").text(genre);
             });
         }
     },
