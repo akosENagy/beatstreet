@@ -36,6 +36,7 @@ app.musicplayer = {
         app.cart.getCart();
         app.songs.addRecentSongs();
         $('#most-recent').click(app.songs.addRecentSongs);
+        $('#genres-header').click(app.genres.showGenres);
 
         cartButton.addEventListener("click", app.cart.displayModal);
 

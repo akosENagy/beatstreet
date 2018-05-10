@@ -123,7 +123,7 @@ app.songs = {
     },
 
     addRecentSongs: function() {
-        if (!($("#player-body-header").text() === "Most recent")) {
+        if (!$("#most-recent").hasClass("selected")) {
             let selectedGenre = app.musicplayer.selectedGenre;
             if (selectedGenre !== null) {
                 selectedGenre.removeClass("selected-genre");
@@ -141,6 +141,8 @@ app.songs = {
 
                 $("#player-body-header").text("Most recent");
                 $("#most-recent").addClass("selected");
+                $("#genres-header").removeClass("selected");
+                $(".sidebar-genres-container").hide(300);
             });
         }
     }

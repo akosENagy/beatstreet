@@ -152,6 +152,11 @@ body {
     font-size: 1.5em;
     font-weight: bold;
     padding: 10px 0;
+    cursor: pointer;
+}
+
+#genres-header:hover {
+    background-color: #414141;
 }
 
 .sidebar-genre {

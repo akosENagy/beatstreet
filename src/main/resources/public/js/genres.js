@@ -37,4 +37,11 @@ app.genres = {
         app.musicplayer.selectedGenre = $genreElement;
         app.musicplayer.selectedGenre.addClass("selected-genre");
     },
+
+    showGenres: function() {
+        let $genres = $('.sidebar-genres-container');
+        $("#genres-header").addClass("selected");
+        $("#most-recent").removeClass("selected");
+        $genres.show(300);
+    }
 };
