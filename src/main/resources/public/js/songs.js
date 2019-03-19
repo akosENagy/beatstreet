@@ -16,7 +16,8 @@ app.songs = {
             currentSongElement.style.display = "block";
         }
 
-        if (app.musicplayer.currentSong === this) {
+        if (app.musicplayer.currentSong !== null &&
+            app.musicplayer.currentSong.dataset.path === this.dataset.path) {
             return;
         }
 
@@ -111,6 +112,11 @@ app.songs = {
             newElement.classList.add("added");
             addToCartButton.style.display = "none";
             removeFromCartButton.style.display = "inline-block";
+        }
+
+        if (app.musicplayer.selectedSong !== null && app.musicplayer.selectedSong[0].dataset.path === song["path"]) {
+            newElement.classList.add("selected-song");
+            app.musicplayer.selectedSong = $(newElement);
         }
 
         document.getElementById("player-body-songs").appendChild(newElement);

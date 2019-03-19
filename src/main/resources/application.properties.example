@@ -1,0 +1,21 @@
+# URL of your database
+spring.datasource.url=jdbc:postgresql://localhost:5432/{dbname}
+
+# Username to access your DB
+spring.datasource.username={username}
+
+# Password to access your DB
+spring.datasource.password={password}
+
+spring.jpa.hibernate.ddl-auto=create-drop
+
+spring.session.store-type=jdbc
+
+spring.jpa.show-sql = true
+
+server.port=60001
+
+spring.thymeleaf.mode=LEGACYHTML5
+
+spring.http.multipart.max-file-size=20MB
+spring.http.multipart.max-request-size=20MB
